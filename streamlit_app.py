@@ -13,7 +13,7 @@ st.set_page_config(page_title="🧊 Penguin Classifier", layout="wide")
 st.title("🧊 Penguin Classifier - Обучение и предсказание")
 st.write("## Работа с датасетом пингвинов")
 
-df = pd.read_csv("C:\Users\HP\OneDrive\Desktop\AI Bootcamp\ML_Homeworks\Titanic.csv")
+df = pd.read_csv(r"C:\Users\HP\OneDrive\Desktop\AI Bootcamp\ML_Homeworks\Titanic.csv")
 
 st.subheader("📋 Случайные 10 строк")
 st.dataframe(df.sample(10), use_container_width=True)
