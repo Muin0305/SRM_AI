@@ -48,7 +48,7 @@ def load_data():
             'recentadditions', 'coder', 'id'
         ]
         df = df.drop(columns=[col for col in columns_to_drop if col in df.columns])
-        df['success'] = df['ended'].apply(lambda x: 1 if x in [1, 4] else 0)
+        df['success'] = df['ended'].apply(lambda x: 1 if x in [0, 1] else 0)
         df = df.drop('ended', axis=1)
 
         # Process fixed_time
