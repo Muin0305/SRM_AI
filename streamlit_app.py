@@ -45,7 +45,7 @@ def load_data():
             'cc', 'cf_id', 'uniq_id', 'ucdp_actor_id', 'actor_name', 'ucdp_acd_id', 'ucdp_dyad', 'pax_id',
             'cf_dec_yr', 'cf_dec_month', 'cf_dec_day', 'cf_effect_yr', 'cf_effect_month', 'cf_effect_day',
             'p_other_comment', 'cf_pp', 'splinter', 'end_yr', 'end_month', 'end_day', 'factivia_page', 'truce',
-            'recentadditions', 'coder', 'id'
+            'recentadditions', 'coder', 'id', 'is_fixed_time_unclear'
         ]
         df = df.drop(columns=[col for col in columns_to_drop if col in df.columns])
         df['success'] = df['ended'].apply(lambda x: 1 if x in [0, 1] else 0)
@@ -60,12 +60,12 @@ def load_data():
             return float(numbers[0]) if numbers else np.nan
 
         df['fixed_time'] = df['fixed_time'].apply(clean_fixed_time)
-        df['is_fixed_time_unclear'] = df['fixed_time'].isna().astype(int)
+    
 
         # Process mediator columns
         categorical_cols = ['location', 'region', 'link', 'side', 'partial', 'written', 'fixed', 'nsa_frac',
                            'p_humanitarian', 'p_peaceprocess', 'p_holiday', 'p_election', 'p_other', 'p_unclear',
-                           'ceasefire_class', 'timing', 'implement', 'enforcement', 'ddr', 'is_fixed_time_unclear']
+                           'ceasefire_class', 'timing', 'implement', 'enforcement', 'ddr']
         numeric_cols = ['fixed_time']
 
         if 'mediator_nego' in df.columns:
