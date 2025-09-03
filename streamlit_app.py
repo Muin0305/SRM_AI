@@ -188,13 +188,12 @@ if model_name == "Random Forest":
 
 # Sidebar for user input
 st.sidebar.header("🔍 Ввод параметров перемирия")
-region = st.sidebar.selectbox("Регион", df['region'].unique())
-written = st.sidebar.selectbox("Письменное соглашение", df['written'].unique())
-fixed_time = st.sidebar.slider("Длительность перемирия (дни)", 0.0, float(df['fixed_time'].max()), float(df['fixed_time'].median()))
-is_fixed_time_unclear = st.sidebar.selectbox("Неопределенность длительности", [0, 1])
+region = st.sidebar.selectbox("Регион: 1-Европа, 2-Ближний Восток, 3-Азия, 4-Африка, 5-Америка", df['region'].unique())
+written = st.sidebar.selectbox("Письменное соглашение: 0-Нет, 1-подписано в государстве, 2-подписано в третьем государстве", df['written'].unique())
+fixed_time = st.sidebar.slider("Длительность перемирия (дни)", 0.0, int(df['fixed_time'].max()), int(df['fixed_time'].median()))
 side = st.sidebar.selectbox("Сторона", df['side'].unique())
 partial = st.sidebar.selectbox("Частичное перемирие", df['partial'].unique())
-ceasefire_class = st.sidebar.selectbox("Класс перемирия", df['ceasefire_class'].unique())
+ceasefire_class = st.sidebar.selectbox("Класс перемирия: 1-Прекращение боевых действий, 2-ПБД с механизмами соблюдения, 3-Окончательные перемирия", df['ceasefire_class'].unique())
 
 # Create user input DataFrame
 try:
@@ -202,7 +201,6 @@ try:
         'region': region,
         'written': written,
         'fixed_time': fixed_time,
-        'is_fixed_time_unclear': is_fixed_time_unclear,
         'side': side,
         'partial': partial,
         'ceasefire_class': ceasefire_class,
