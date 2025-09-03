@@ -110,9 +110,6 @@ with col2:
                                title="Успешность перемирий по наличию письменного соглашения")
     st.plotly_chart(fig_written, use_container_width=True)
 
-fig_box = px.box(df, x="success", y="fixed_time", color="is_fixed_time_unclear",
-                 title="Распределение длительности перемирия по успешности")
-st.plotly_chart(fig_box, use_container_width=True)
 
 # Preprocessing pipeline
 try:
