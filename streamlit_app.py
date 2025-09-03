@@ -52,12 +52,14 @@ def load_data():
         df = df.drop('ended', axis=1)
 
         # Process fixed_time
-        def clean_fixed_time(x):
+        def clean_fixed_time(x, mean_value=30.0):
             if pd.isna(x):
                 return np.nan
             x_str = str(x).lower()
             numbers = re.findall(r'\d+', x_str)
-            return float(numbers[0]) if numbers else np.nan
+            if numbers:
+                return float(numbers[0])  # Возвращаем первое число как float
+            return mean_value  # Возвращаем среднее значение, если чисел нет
 
         df['fixed_time'] = df['fixed_time'].apply(clean_fixed_time)
     
