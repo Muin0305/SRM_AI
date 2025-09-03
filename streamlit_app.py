@@ -198,7 +198,7 @@ try:
     user_input = pd.DataFrame([{
         'region': region,
         'written': written,
-        'fixed_time': fixed_time,
+        'fixed_time': df['fixed_time'].mode()[0],
         'side': side,
         'partial': partial,
         'ceasefire_class': ceasefire_class,
